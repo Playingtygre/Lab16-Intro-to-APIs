@@ -3,6 +3,9 @@ Application
 Processing
 Interface
 
+Today we had build a controller and a back end database, utilizing just routes we connected post mates URL and tested to see if our 
+data was valid
+
 The link is [INTO TO API](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-2.1)
 ## Author:
 Tiger Hsu
@@ -26,20 +29,11 @@ you will see code blocks that have the following<br>
 5. The website will run on your default web browser routing to the main home page.
 6. Install POSTMAN
 
-## Example
-
-![alt text](http://url/to/img.png)
-
-<!-- Show them what looks like and how how to use the application.  -->
 
 ## Architecture
  - C# ASP.NET Core application.
  - MVC architectural design pattern.
  - Entity Framework - built in Visual Studio
-
-
-## Attribution
-
 
 ## Resources
 StackoverFlow
@@ -48,8 +42,5 @@ Microsoft Docs
 ## License
 MIT License
 
-/* Code modified from function sortTableArray obtained from  */
-
 ## Change Log
-
-01-01-2001 4:59pm - Added functionality to add and delete some things. -->
+04-10-2018 4:59pm
