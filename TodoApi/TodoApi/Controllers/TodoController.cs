@@ -53,6 +53,61 @@ namespace TodoApi.Controllers
         }
 
 
+        // POST api/<controller>
+        [HttpPost]
+        //Tells MVC to get to get to the value of to-do item
+        public IActionResult Create([FromBody] TodoItem item)
+        {
+            if (item == null)
+            {
+                return BadRequest();
+            }
+
+            _context.TodoItems.Add(item);
+            _context.SaveChanges();
+            //this returns as 201 http response
+            return CreatedAtRoute("GetTodo", new { id = item.Id }, item);
+        }
+
+
+        //this is the update file this usese HTTP
+        [HttpPut("{id}")]
+        public IActionResult Update(long id, [FromBody] TodoItem item)
+        {
+            if (item == null || item.Id != id)
+            {
+                return BadRequest();
+            }
+
+            var todo = _context.TodoItems.FirstOrDefault(t => t.Id == id);
+            if (todo == null)
+            {
+                return NotFound();
+            }
+
+            todo.IsComplete = item.IsComplete;
+            todo.Name = item.Name;
+
+            _context.TodoItems.Update(todo);
+            _context.SaveChanges();
+            return new NoContentResult();
+        }
+
+        //This is a delete method
+        [HttpDelete("{id}")]
+        public IActionResult Delete(long id)
+        {
+            var todo = _context.TodoItems.FirstOrDefault(t => t.Id == id);
+            if (todo == null)
+            {
+                return NotFound();
+            }
+
+            _context.TodoItems.Remove(todo);
+            _context.SaveChanges();
+            return new NoContentResult();
+        }
+
         /*
         // GET api/<controller>/5
         [HttpGet("{id}")]
@@ -61,11 +116,7 @@ namespace TodoApi.Controllers
             return "value";
         }
 
-        // POST api/<controller>
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
+       
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
